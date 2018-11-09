@@ -6,10 +6,11 @@ public class JumpPad : MonoBehaviour {
 
     public float jumpPower = 500f;
     public ParticleSystem particle;
+    private AudioSource jumpSound;
 
 	// Use this for initialization
 	void Start () {
-		
+        jumpSound = gameObject.GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -27,6 +28,9 @@ public class JumpPad : MonoBehaviour {
 
             //衝突時、パーティクル再生 by山中
             particle.Play();
+            //音再生
+            jumpSound.PlayOneShot(jumpSound.clip);
+
 
             Debug.Log("Jump!");
         }    
